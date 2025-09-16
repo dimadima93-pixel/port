@@ -1,0 +1,14 @@
+helm repo add --force-update port-labs https://port-labs.github.io/helm-charts
+helm upgrade --install jira port-labs/port-ocean \
+  --set port.clientId="28kD21r2VZcLvHvlP2NHk5YN60VyPg2l"  \
+  --set port.clientSecret="wM3F1ukhKihNhLcjCB8NSiNDQPm6Z80xUHrSig81CGE7cdbT1v9S0ueuxeww8Vqb"  \
+  --set port.baseUrl="https://api.port.io"  \
+  --set initializePortResources=true  \
+  --set sendRawDataExamples=true  \
+  --set scheduledResyncInterval=360  \
+  --set integration.identifier="port"  \
+  --set integration.type="jira"  \
+  --set integration.eventListener.type="POLLING"  \
+  --set integration.config.jiraHost="https://dimadima93.atlassian.net"  \
+  --set integration.secrets.atlassianUserEmail="dimadima93@gmail.com"  \
+  --set integration.secrets.atlassianUserToken="ATCTT3xFfGN0kWXA5GT0fP41Nm4WCx3SanZPCA0Lkrm009Qfnbgbhx0ygDHBmICtdNh7SolpYeGOzTUMVsDp-V_5pSv0yg4CBV1uPEn0Dgt5jom_Omqpmd4Il-6I6jfAjNBuwX0SGwhEjvRnV-wxuwvIPIDOg2Btsc8pcrnc-kLy1LQcoKNtfM8=BB505C48" 
