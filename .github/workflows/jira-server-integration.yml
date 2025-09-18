@@ -1,0 +1,23 @@
+name: Jira Server Exporter Workflow
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 */2 * * *' # Determines the scheduled interval for this workflow. This example runs every 2 hours.
+
+jobs:
+  run-integration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30 # Set a time limit for the job
+
+    steps:
+      - uses: port-labs/ocean-sail@v1
+        with:
+          type: 'jira-server'
+          port_client_id: ${{ secrets.OCEAN__PORT__CLIENT_ID }}
+          port_client_secret: ${{ secrets.OCEAN__PORT__CLIENT_SECRET }}
+          port_base_url: https://api.getport.io
+          config: |
+            jira_server_host: ${{ secrets.OCEAN__INTEGRATION__CONFIG__JIRA_SERVER_HOST }}
+          secrets: |
+            token: ${{ secrets.OCEAN__INTEGRATION__SECRETS__TOKEN }}
