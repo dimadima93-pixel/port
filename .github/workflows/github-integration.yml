@@ -13,8 +13,8 @@ jobs:
       - uses: port-labs/ocean-sail@v1
         with:
           type: "github-ocean"
-          port_client_id: ${{ secrets.OCEAN__PORT__CLIENT_ID }}
-          port_client_secret: ${{ secrets.OCEAN__PORT__CLIENT_SECRET }}
+          port_client_id: ${{ 28kD21r2VZcLvHvlP2NHk5YN60VyPg2l }}
+          port_client_secret: ${{ wM3F1ukhKihNhLcjCB8NSiNDQPm6Z80xUHrSig81CGE7cdbT1v9S0ueuxeww8Vqb }}
           port_base_url: https://api.getport.io
           config: |
             githubHost: ${{ secrets.OCEAN__INTEGRATION__CONFIG__GITHUB_HOST }}
