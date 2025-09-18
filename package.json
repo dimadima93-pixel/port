@@ -1,0 +1,21 @@
+resources:
+  - kind: file
+    selector:
+      query: 'true'
+      files:
+        # Note that glob patterns are supported, so you can use wildcards to match multiple files
+        - path: '**/package.json'
+        # The `repos` key can be used to filter the repositories from which the files will be fetched
+          repos:
+            - "MyRepo"
+            - "MyOtherRepo"
+    port:
+      entity:
+        mappings:
+          identifier: .file.path
+          title: .file.name
+          blueprint: '"manifest"'
+          properties:
+            project_name: .file.content.name
+            project_version: .file.content.version
+            license: .file.content.license
