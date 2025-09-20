@@ -14,7 +14,7 @@ jobs:
       - uses: port-labs/ocean-sail@v1
         with:
           type: 'jira-server'
-          port_client_id: ${{ inputs.OCEAN__PORT__CLIENT_ID }}
+          port_client_id: ${{ secrets.OCEAN__PORT__CLIENT_ID }}
           port_client_secret: ${{ secrets.OCEAN__PORT__CLIENT_SECRET }}
           port_base_url: https://api.getport.io
           config: |
