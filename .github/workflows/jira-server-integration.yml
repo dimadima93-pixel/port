@@ -3,14 +3,25 @@ name: Jira Server Exporter Workflow
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 */2 * * *' # Determines the scheduled interval for this workflow. This example runs every 2 hours.
+    - cron: '0 */2 * * *' # Runs every 2 hours
 
 jobs:
   run-integration:
     runs-on: ubuntu-latest
-    timeout-minutes: 30 # Set a time limit for the job
+    timeout-minutes: 30
 
     steps:
+      - name: Check required secrets
+        run: |
+          if [ -z "${{ secrets.OCEAN__PORT__CLIENT_ID }}" ]; then
+            echo "OCEAN__PORT__CLIENT_ID secret is not set."
+            exit 1
+          fi
+          if [ -z "${{ secrets.OCEAN__PORT__CLIENT_SECRET }}" ]; then
+            echo "OCEAN__PORT__CLIENT_SECRET secret is not set."
+            exit 1
+          fi
+
       - uses: port-labs/ocean-sail@v1
         with:
           type: 'jira-server'
